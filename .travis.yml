@@ -25,3 +25,5 @@ branches:
 script: bin/test
 notifications:
   irc: irc.freenode.org#propertyshelf
+  hipchat:
+    secure: "Mim2LyP5lNkzZ8gPCuiCd7grGLQ81ypxLea5BtpcLMmz/T3D+lsimvYhNDN7jc5S8TTCANmdiC4cjQz1tx1sSngdFEiT2gXzeAoaP6kDU44IyPBYGINtCDcVw0lQ35wMMIElJwXHhOmukDid6qIDXoXC7hPlYnh8xVJktwyNf+Y="
