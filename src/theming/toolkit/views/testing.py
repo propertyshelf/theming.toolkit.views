@@ -1,20 +1,34 @@
-from plone.app.testing import PloneWithPackageLayer
-from plone.app.testing import IntegrationTesting
-from plone.app.testing import FunctionalTesting
+# -*- coding: utf-8 -*-
 
-import theming.toolkit.views
+"""Test Layer theming.toolkit.views"""
+
+# zope imports
+from plone.app.testing import (
+    IntegrationTesting,
+    PloneSandboxLayer,
+    PLONE_FIXTURE,
+    applyProfile,
+)
+from zope.configuration import xmlconfig
 
 
-THEMING_TOOLKIT_VIEWS = PloneWithPackageLayer(
-    zcml_package=theming.toolkit.views,
-    zcml_filename='testing.zcml',
-    gs_profile_id='theming.toolkit.views:testing',
-    name="THEMING_TOOLKIT_VIEWS")
+class ToolkitViews(PloneSandboxLayer):
+    """Custom Test Layer for theming.toolkit.views"""
+    defaultBases = (PLONE_FIXTURE, )
 
-THEMING_TOOLKIT_VIEWS_INTEGRATION = IntegrationTesting(
-    bases=(THEMING_TOOLKIT_VIEWS, ),
-    name="THEMING_TOOLKIT_VIEWS_INTEGRATION")
+    def setUpZope(self, app, configurationContext):
+        # Load ZCML for this package
+        import theming.toolkit.views
+        xmlconfig.file('configure.zcml',
+                       theming.toolkit.views,
+                       context=configurationContext)
 
-THEMING_TOOLKIT_VIEWS_FUNCTIONAL = FunctionalTesting(
-    bases=(THEMING_TOOLKIT_VIEWS, ),
-    name="THEMING_TOOLKIT_VIEWS_FUNCTIONAL")
+    def setUpPloneSite(self, portal):
+        applyProfile(portal, 'theming.toolkit.views:default')
+
+
+TOOLKIT_VIEWS_FIXTURE = ToolkitViews()
+TOOLKIT_VIEWS_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(TOOLKIT_VIEWS_FIXTURE, ),
+    name="ToolkitViews:Integration")
+
