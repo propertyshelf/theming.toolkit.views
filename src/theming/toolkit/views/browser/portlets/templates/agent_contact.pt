@@ -4,7 +4,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
-      i18n:domain="theming.toolkit.views"
+      i18n:domain="plone.mls.listing"
       tal:omit-tag="">
   <dl class="portlet portletAgentContact"
       tal:define="portal context/@@plone_portal_state/portal;
