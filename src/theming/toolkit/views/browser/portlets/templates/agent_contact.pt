@@ -10,7 +10,6 @@
       tal:define="portal context/@@plone_portal_state/portal;
                   email_from_address portal/email_from_address;">
     <dt class="portletHeader">
-      Rasta
       <span class="portletTopLeft"></span>
       <span tal:omit-tag="" tal:content="view/title | nothing"></span>
       <span class="portletTopRight"></span>
@@ -29,7 +28,6 @@
            tal:content="view/description | nothing"></p>
         <div tal:replace="structure view/form | nothing"></div>
       </tal:block>
-      BLOODCLAAT
     </dd>
     <div class="visualClear"></div>
   </dl>
