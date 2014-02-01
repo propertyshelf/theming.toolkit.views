@@ -1,1 +1,0 @@
-"""Portlets of the themes.toolkit.views"""
