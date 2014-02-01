@@ -46,7 +46,17 @@ class ListingDetails(BrowserView):
 
     @property
     def error(self):
-        return self._error 
+        return self._error
+
+    @property
+    def title(self):
+        if getattr(self.request, 'listing_id', None) is not None:
+            if self.info is not None:
+                title = self.info.get('title', None)
+                if title is not None:
+                    return title.get('value', self.context.title)
+        else:
+            return self.context.Title
 
     @property
     def lead_image(self):
@@ -55,6 +65,11 @@ class ListingDetails(BrowserView):
             if len(image) > 0:
                 return image[0]
         return None
+
+    @property
+    def info(self):
+        if self.data is not None:
+            return self.data.get('info', None)
     
     def base_url(self):
         if getattr(self.request, 'listing_id', None) is not None:
