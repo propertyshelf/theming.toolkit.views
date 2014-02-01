@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      i18n:domain="theming.toolkit.views">
+
+      <div class="mls-listing" tal:define="info view/info | nothing">
+        
+        <tal:error tal:define="error view/error | nothing" tal:condition="error">
+            <p><span tal:replace="error/standard | nothing">[Error]</span></p>
+            <div class="extended" tal:define="extended error/extended | nothing" tal:condition="extended" tal:content="structure extended"></div>
+        </tal:error>
+
+        <tal:listing tal:condition="view/data | nothing">
+
+          <div id="listing-info" tal:condition="info">
+            <h2 i18n:translate="">Basic Listing Information</h2>
+            <dl class="price">
+              <tal:item tal:define="item info/price | nothing" tal:condition="item">
+                <dt><span tal:replace="item/label">[Label]</span>:</dt>
+                <dd><span tal:replace="item/value">[Value]</span></dd>
+              </tal:item>
+            </dl>       
+            <dl>
+              <tal:item tal:define="item info/beds_baths | nothing" tal:condition="item">
+                <dt><span tal:replace="item/label">[Label]</span>:</dt>
+                <dd><span tal:replace="item/value">[Value]</span></dd>
+              </tal:item>
+            </dl>
+          </div>
+
+          <div id="listing-images">
+            <a href=""
+               tal:define="image view/lead_image | nothing"
+               tal:condition="image"
+               tal:attributes="href image/url;
+                               title image/title | nothing;"><img src=""
+               tal:attributes="src image/preview" /></a>
+          </div>
+  
+        </tal:listing>  
+      </div>    
+</html>

@@ -17,11 +17,21 @@
     
     <!-- Images -->  
     <browser:page
-      name="carousel-view"
-      for="Products.ATContentTypes.interfaces.IATImage"
-      template="templates/carousel-image-view.pt"
-      permission="zope2.View"
-      layer=".interfaces.IToolkitViews"
+        name="carousel-view"
+        for="Products.ATContentTypes.interfaces.IATImage"
+        template="templates/carousel-image-view.pt"
+        permission="zope2.View"
+        layer=".interfaces.IToolkitViews"/>
+
+      <!-- Listings -->
+      
+    <browser:page
+        name="carousel-view"
+        class=".views.ListingDetails"
+        for="plone.mls.listing.content.listing.IListing"
+        template="templates/listing-carousel-view.pt"
+        permission="zope2.View"
+        layer=".interfaces.IToolkitViews"
       />
 
 
