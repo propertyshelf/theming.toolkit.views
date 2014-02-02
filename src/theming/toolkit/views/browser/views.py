@@ -12,7 +12,6 @@ from plone.mls.listing.api import listing_details
 from theming.toolkit.views.browser.interfaces import IToolkitViews
 
 
-
 @implementer(IToolkitViews)
 class ListingDetails(BrowserView):
 
@@ -70,7 +69,7 @@ class ListingDetails(BrowserView):
     def info(self):
         if self.data is not None:
             return self.data.get('info', None)
-    
+
     def base_url(self):
         if getattr(self.request, 'listing_id', None) is not None:
             return '/'.join([self.context.absolute_url(), self.listing_id])
