@@ -22,7 +22,7 @@ install_requires = [
 setup(
     name='theming.toolkit.views',
     version=version,
-    description="",
+    description="Custom views for Plone Add-Ons.",
     long_description=long_description,
     # Get more strings from
     # http://pypi.python.org/pypi?%3Aaction=list_classifiers
