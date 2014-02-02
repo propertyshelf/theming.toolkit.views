@@ -6,6 +6,10 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="theming.toolkit.views">
 
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <!-- Include package dependencies. -->
+  <!-- ============================= -->
   <includeDependencies package="." />
   <include package=".browser" />
 
@@ -16,5 +20,5 @@
       description="Installs the theming.toolkit.views package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  
+
 </configure>
