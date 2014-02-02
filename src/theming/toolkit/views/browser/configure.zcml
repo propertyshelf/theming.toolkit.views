@@ -2,39 +2,42 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:plone="http://namespaces.plone.org/zcml"
     i18n_domain="theming.toolkit.views">
 
-    <!-- Override views for carousel -->
-    <!-- Pages -->
-    <browser:page
-      name="carousel-view"
-      for="Products.ATContentTypes.interfaces.IATDocument"
-      template="templates/carousel-view-standard.pt"
-      permission="zope2.View"
-      layer=".interfaces.IToolkitViews"
-      />
-    
-    
-    <!-- Images -->  
-    <browser:page
-        name="carousel-view"
-        for="Products.ATContentTypes.interfaces.IATImage"
-        template="templates/carousel-image-view.pt"
-        permission="zope2.View"
-        layer=".interfaces.IToolkitViews"/>
 
-      <!-- Listings -->
-      
+  <configure zcml:condition="installed collective.carousel">
+
+    <!-- Custom views for collective.carousel. -->
+    <!-- ===================================== -->
+
+    <!-- Plone Documents. -->
     <browser:page
+        for="Products.ATContentTypes.interfaces.IATDocument"
+        layer=".interfaces.IToolkitViews"
         name="carousel-view"
+        permission="zope2.View"
+        template="templates/carousel-view-standard.pt"
+        />
+
+    <!-- Plone Images. -->
+    <browser:page
+        for="Products.ATContentTypes.interfaces.IATImage"
+        layer=".interfaces.IToolkitViews"
+        name="carousel-view"
+        permission="zope2.View"
+        template="templates/carousel-image-view.pt"
+        />
+
+    <!-- Propertyshelf Listings. -->
+    <browser:page zcml:condition="installed plone.mls.listing"
         class=".views.ListingDetails"
         for="plone.mls.listing.content.listing.IListing"
-        template="templates/listing-carousel-view.pt"
-        permission="zope2.View"
         layer=".interfaces.IToolkitViews"
-      />
-
-
+        name="carousel-view"
+        permission="zope2.View"
+        template="templates/listing-carousel-view.pt"
+        />
+  </configure>
 
 </configure>
-
