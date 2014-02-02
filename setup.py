@@ -15,7 +15,6 @@ long_description = (
 
 install_requires = [
     'setuptools',
-    'plone.mls.listing',
 ]
 
 
