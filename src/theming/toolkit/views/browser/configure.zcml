@@ -20,6 +20,15 @@
         template="templates/carousel-view-standard.pt"
         />
 
+    <browser:page
+        for="Products.ATContentTypes.interfaces.IATDocument"
+        layer=".interfaces.IToolkitViews"
+        name="carousel-portlet-view"
+        permission="zope2.View"
+        template="templates/carousel-portlet-view.pt"
+        class=".views.CarouselPortletView"
+        />
+
     <!-- Plone Images. -->
     <browser:page
         for="Products.ATContentTypes.interfaces.IATImage"

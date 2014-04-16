@@ -11,6 +11,29 @@ from zope.interface import implementer
 from plone.mls.listing.api import listing_details
 from theming.toolkit.views.browser.interfaces import IToolkitViews
 
+@implementer(IToolkitViews)
+class CarouselPortletView(BrowserView):
+
+    def __init__(self, context, request):
+        super(CarouselPortletView, self).__init__(context, request)
+        self.update()
+
+    def update(self):
+        self.portal_state = queryMultiAdapter((self.context, self.request),
+                                              name='plone_portal_state')
+
+    @property
+    def ParentTitle(self):
+        """"carousel item title"""
+        try:
+            return self.__parent__.__parent__.title_or_id()
+        except Exception:
+            return False
+
+    @property
+    def image(self):
+        """carousel item image"""
+        return True
 
 @implementer(IToolkitViews)
 class ListingDetails(BrowserView):
