@@ -5,6 +5,7 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="theming.toolkit.views">
 
+  <include file="tiles.zcml" zcml:condition="installed collective.cover"/>
 
   <configure zcml:condition="installed collective.carousel">
 
@@ -47,6 +48,7 @@
         permission="zope2.View"
         template="templates/listing-carousel-view.pt"
         />
-  </configure>
+  </configure> 
+    
 
 </configure>
