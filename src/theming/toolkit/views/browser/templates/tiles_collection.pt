@@ -47,8 +47,7 @@
       </div>
 
 
-      <div class="collection-item" 
-           tal:repeat="item results">
+      <div class="collection-item" tal:repeat="item results">
         <tal:items define="obj item/getObject;
                           thumbnail python:view.thumbnail(obj);
                           leadimage python:view.leadimage(obj);">

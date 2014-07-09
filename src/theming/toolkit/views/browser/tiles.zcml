@@ -4,13 +4,13 @@
     i18n_domain="theming.toolkit.views">
 
     <include package="plone.tiles" file="meta.zcml" />
-    <include package="plone.tiles" />
     
     <plone:tile
-        name="collective.cover.collection"
+        name="collective.cover.collection" 
         template="templates/tiles_collection.pt"
         class=".collectiontile.CollectionTile"
         permission="zope.Public"
         for="*"
         layer=".interfaces.IToolkitViews"/>
+
 </configure>
