@@ -47,24 +47,26 @@
       </div>
 
 
-      <div class="collection-item" tal:repeat="item results">
-        <tal:items define="obj item/getObject; ">
-          
-        <!--
-          <div class="carousel-image"
-            tal:define="scale obj/@@images; img python:scale.scale('leadImage_preview', width=400, height=400)" tal:condition="img">
-              <a tal:content="structure img"/>
-          </div>
-      -->
+      <div class="collection-item" 
+           tal:repeat="item results">
+        <tal:items define="obj item/getObject;
+                          thumbnail python:view.thumbnail(obj);
+                          leadimage python:view.leadimage(obj);">
+
           <tal:fields repeat="field view/configured_fields">
-            <tal:image define="thumbnail python:view.thumbnail(obj);"
-                       condition="python:field['id'] == 'image' and thumbnail">
+
+            <tal:image condition="python:field['id'] == 'image' and thumbnail" tal:on-error="nothing">
               <a tal:attributes="href obj/absolute_url">
                 <img tal:attributes="src thumbnail/url;
                                      width thumbnail/width;
                                      height thumbnail/height;
                                      class view/get_image_position;
                                      alt obj/Title;" />
+              </a>
+            </tal:image>
+            <tal:image condition="python:field['id'] == 'image' and leadimage" tal:on-error="nothing">
+              <a tal:attributes="href obj/absolute_url">
+                <img tal:replace="structure leadimage"/>
               </a>
             </tal:image>
 
