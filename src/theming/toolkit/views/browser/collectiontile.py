@@ -20,24 +20,25 @@ class CollectionTile(CollectionTile):
         if self._has_image_field(item) and self._field_is_visible('image'):
             tile_conf = self.get_tile_configuration()
             image_conf = tile_conf.get('image', None)
-            if image_conf:
-                scaleconf = image_conf['imgsize']
-                # scale string is something like: 'mini 200:200'
-                # we need the name only: 'mini'
-                if scaleconf == '_original':
-                    scale = None
-                else:
-                    scale = scaleconf.split(' ')[0]
+            if not image_conf:
+                return
+            scaleconf = image_conf['imgsize']
+            # scale string is something like: 'mini 200:200'
+            # we need the name only: 'mini'
+            if scaleconf == '_original':
+                scale = None
+            else:
+                scale = scaleconf.split(' ')[0]
 
-                if self._has_leadimage(item):
-                    """return the lead image tag"""
-                    field = item.getField(IMAGE_FIELD_NAME)
-                    if field is not None and field.get_size(item) != 0:
-                        return field.tag(item, scale=scale, css_class="leadimage")
+            if self._has_leadimage(item):
+                """return the lead image tag"""
+                field = item.getField(IMAGE_FIELD_NAME)
+                if field is not None and field.get_size(item) != 0:
+                    return field.tag(item, scale=scale, css_class='leadimage')
 
-                else:
-                    scales = item.restrictedTraverse('@@images')
-                    return scales.scale('image', scale)
+            else:
+                scales = item.restrictedTraverse('@@images')
+                return scales.scale('image', scale)
 
     def leadimage(self, item):
         """return lead image"""
@@ -58,12 +59,11 @@ class CollectionTile(CollectionTile):
             field = item.getField(IMAGE_FIELD_NAME)
 
             if field is not None and field.get_size(item) != 0:
-                return field.tag(item, scale=scale, css_class="leadimage")
+                return field.tag(item, scale=scale, css_class='leadimage')
             else:
                 return False
-        else: 
+        else:
             return False
-
 
     def _has_image_field(self, item):
         """Return True if the object has an image field.
@@ -71,7 +71,7 @@ class CollectionTile(CollectionTile):
         :param obj: [required]
         :type obj: content object
         """
-     
+
         if hasattr(item, 'image'):  # Dexterity
             return True
         elif hasattr(item, 'Schema'):  # Archetypes

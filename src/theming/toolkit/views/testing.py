@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 """Test Layer theming.toolkit.views"""
 
 # zope imports
@@ -30,5 +29,5 @@ class ToolkitViews(PloneSandboxLayer):
 TOOLKIT_VIEWS_FIXTURE = ToolkitViews()
 TOOLKIT_VIEWS_INTEGRATION_TESTING = IntegrationTesting(
     bases=(TOOLKIT_VIEWS_FIXTURE, ),
-    name="ToolkitViews:Integration")
-
+    name='ToolkitViews:Integration',
+)

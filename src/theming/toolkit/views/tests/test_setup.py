@@ -1,5 +1,4 @@
- #-*- coding: utf-8 -*-
-
+# -*- coding: utf-8 -*-
 """Test Setup of theming.toolkit.views"""
 
 # python imports
@@ -11,7 +10,8 @@ from plone.browserlayer import utils as layerutils
 
 # local imports
 from theming.toolkit.views.browser.interfaces import IToolkitViews
-from theming.toolkit.views.testing import (TOOLKIT_VIEWS_INTEGRATION_TESTING,
+from theming.toolkit.views.testing import (
+    TOOLKIT_VIEWS_INTEGRATION_TESTING,
 )
 
 

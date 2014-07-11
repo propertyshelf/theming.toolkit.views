@@ -11,6 +11,7 @@ from zope.interface import implementer
 from plone.mls.listing.api import listing_details
 from theming.toolkit.views.browser.interfaces import IToolkitViews
 
+
 @implementer(IToolkitViews)
 class CarouselPortletView(BrowserView):
 
@@ -34,6 +35,7 @@ class CarouselPortletView(BrowserView):
     def image(self):
         """carousel item image"""
         return True
+
 
 @implementer(IToolkitViews)
 class ListingDetails(BrowserView):
